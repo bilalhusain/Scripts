@@ -1,0 +1,18 @@
+#!/bin/bash
+if test -z "$1"
+then
+	tar -cf bundle.tar . --exclude bundle.tar
+	echo "[INFO] compressed current directory contents to bundle.tar"
+elif test $1 = "--help"
+then
+	echo "Usage: bundle [options]"
+	echo "Compress to bundle.tar if no options specified"
+	echo "	cleanup		removes bundle.tar"
+	#echo ""
+elif test $1 = "cleanup"
+then
+	rm -f bundle.tar
+	echo "[INFO] removed bundle.tar"
+else
+	echo "[INFO] option $1 is invalid"
+fi
